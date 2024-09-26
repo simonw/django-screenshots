@@ -22,7 +22,7 @@ server_process = subprocess.Popen(
     stderr=subprocess.PIPE
 )
 
-time.sleep(1)
+time.sleep(3)
 
 try:
     # Take a screenshot using shot-scraper
