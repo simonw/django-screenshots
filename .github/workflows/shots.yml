@@ -1,0 +1,55 @@
+name: Take screenshots
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  shot-scraper:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+        cache: "pip"
+    - name: Cache Playwright browsers
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/ms-playwright/
+        key: ${{ runner.os }}-browsers
+    - name: Cache OxiPNG
+      uses: actions/cache@v3
+      with:
+        path: ~/.cargo/
+        key: ${{ runner.os }}-cargo
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        which oxipng || cargo install oxipng
+        shot-scraper install
+    - name: Take shots
+      run: |
+        python generate.py
+    - name: Optimize PNGs
+      run: |-
+        oxipng -o 4 -i 0 --strip safe screenshots/*.png
+    - name: Commit and push
+      if: github.ref == 'refs/heads/main'
+      run: |-
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git add screenshots/*.png
+        timestamp=$(date -u)
+        git commit -m "${timestamp}" || exit 0
+        git pull --rebase
+        git push
+    - name: Upload artifact of shots
+      uses: actions/upload-artifact@v4
+      with:
+        name: screenshots
+        path: screenshots/*.png
