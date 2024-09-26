@@ -1,8 +1,8 @@
-- url: http://127.0.0.1:8003/admin/?_user=admin
+- url: http://127.0.0.1:3000/admin/?_user=admin
   output: screenshots/admin-index.png
   width: 1024
   height: 768
-# - url: http://127.0.0.1:8003/admin/login/
+# - url: http://127.0.0.1:3000/admin/login/
 #   output: screenshots/login.png
 #   width: 1024
 #   height: 768

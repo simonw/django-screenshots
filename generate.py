@@ -16,7 +16,7 @@ subprocess.run(["./manage.py", "migrate"], cwd=testproject_dir, check=True)
 
 # Start the Django development server
 server_process = subprocess.Popen(
-    ["./manage.py", "runserver", "0.0.0.0:8003"],
+    ["./manage.py", "runserver", "0.0.0.0:3000"],
     cwd=testproject_dir,
     stdout=subprocess.PIPE,
     stderr=subprocess.PIPE
