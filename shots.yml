@@ -1,4 +1,4 @@
-- url: http://localhost:8084/admin/?_user=admin
+- url: http://127.0.0.1:8084/admin/?_user=admin
   output: screenshots/admin-index.png
   width: 1024
   height: 768
