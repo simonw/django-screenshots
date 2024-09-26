@@ -1,8 +1,8 @@
-- url: http://localhost:8001/admin/?_user=admin
+- url: http://localhost:8003/admin/?_user=admin
   output: screenshots/admin-index.png
   width: 1024
   height: 768
-# - url: http://localhost:8001/admin/login/
+# - url: http://localhost:8003/admin/login/
 #   output: screenshots/login.png
 #   width: 1024
 #   height: 768
