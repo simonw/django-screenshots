@@ -1,0 +1,11 @@
+- url: http://localhost:8084/admin/?_user=admin
+  output: screenshots/admin-index.png
+  width: 1024
+  height: 768
+- url: http://localhost:8084/admin/login/
+  output: screenshots/login.png
+  width: 1024
+  height: 768
+  selector: '#container'
+  wait: 500
+  padding: 10
