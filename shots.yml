@@ -7,5 +7,5 @@
   width: 1024
   height: 768
   selector: '#container'
-  wait: 500
+  wait: 1000
   padding: 10
