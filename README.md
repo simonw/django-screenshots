@@ -18,7 +18,7 @@ python generate.py
 
 This starts a localhost server with the example Django project in `testproject/` and then takes screenshots using [shot-scraper](https://shot-scraper.datasette.io/) based on the configuration in [shots.yml](https://github.com/simonw/django-screenshots/blob/main/shots.yml).
 
-Screenshots are written to the `screenshots/` directory.
+Screenshots are written to the [screenshots/](https://github.com/simonw/django-screenshots/tree/main/screenshots) directory.
 
 ## Running in GitHub Actions
 
