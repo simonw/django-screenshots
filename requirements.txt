@@ -1,2 +1,2 @@
-shot-scraper
+shot-scraper>=1.5
 django

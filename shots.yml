@@ -1,3 +1,12 @@
+- sh: |
+    # reset database and run migrations
+    rm -f testproject/db.sqlite3
+    python testproject/manage.py migrate
+- server:
+  - python
+  - testproject/manage.py
+  - runserver
+  - 8003
 - url: http://localhost:8003/admin/?_user=admin
   output: screenshots/admin-index.png
   width: 1024
@@ -9,3 +18,17 @@
   selector: '#container'
   wait_for: document.querySelector('#container')
   padding: 10
+- python: |
+    # Uncomment the polls app
+    before = open("testproject/testproject/settings.py").read()
+    after = before.replace('# "polls",', '"polls",')
+    open("testproject/testproject/settings.py", "w").write(after)
+    # Give runserver time to restart
+    import time
+    time.sleep(2)
+- sh: python testproject/manage.py migrate
+- url: http://localhost:8003/admin/?_user=admin
+  output: screenshots/admin-index-with-polls.png
+  width: 1024
+  height: 768
+- sh: git checkout testproject/testproject/settings.py

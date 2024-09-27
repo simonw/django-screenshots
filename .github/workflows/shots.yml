@@ -34,7 +34,7 @@ jobs:
         shot-scraper install
     - name: Take shots
       run: |
-        python generate.py
+        shot-scraper multi shots.yml
     - name: Optimize PNGs
       run: |-
         oxipng -o 4 -i 0 --strip safe screenshots/*.png
